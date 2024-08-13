@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(Calculator());
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Calculator(),
-      ),
-    );
-  }
-}
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         body: Calculator(),
+//       ),
+//     );
+//   }
+// }
 
 class Calculator extends StatefulWidget {
   const Calculator({super.key});
@@ -23,14 +23,14 @@ class Calculator extends StatefulWidget {
 class _CalculatorState extends State<Calculator> {
   TextEditingController controler = TextEditingController();
   TextEditingController controler1 = TextEditingController();
-  String _result = '';
+  String result = '';
 
   void calculatesum() {
-    final double num1 = double.parse(controler.text);
-    final double num2 = double.parse(controler1.text);
-    final double sum = num1 + num2;
+    int a = int.parse(controler1.text);
+    int b =int.parse(controler.text);
+    int c =a+b;
     setState(() {
-      _result = "$sum";
+      result = "$c";
     });
   }
 
@@ -70,7 +70,9 @@ class _CalculatorState extends State<Calculator> {
                   )),),
 
                 Padding(padding: EdgeInsets.only(left: 30, right: 30),
-                  child: ElevatedButton(onPressed: calculatesum,
+                  child: ElevatedButton(onPressed: (){
+                   calculatesum();
+                  },
                     child: Text('sum of numbers'),
                   ),),
 
@@ -78,7 +80,7 @@ class _CalculatorState extends State<Calculator> {
                   children: [
                     Text("Result:",
                       style: TextStyle(fontSize: 30, color: Colors.red),),
-                    Text(_result, style: TextStyle(fontSize: 50,
+                    Text(result, style: TextStyle(fontSize: 50,
                         color: Colors.green,
                         fontWeight: FontWeight.bold),)
                   ],)
@@ -91,3 +93,4 @@ class _CalculatorState extends State<Calculator> {
     );
   }
 }
+
